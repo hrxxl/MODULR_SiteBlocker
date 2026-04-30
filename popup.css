@@ -1,0 +1,551 @@
+/* ═══════════════════════════════════════════
+   SiteBlock — Popup Stylesheet
+   Design: monochrome premium, soft shadows,
+   pill elements, Inter typeface
+   ═══════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:            #F5F5F5;
+  --surface:       #FFFFFF;
+  --surface-hover: #F9F9F9;
+  --border:        #EBEBEB;
+  --border-soft:   #F0F0F0;
+
+  --text-primary:  #0A0A0A;
+  --text-secondary:#4B5563;
+  --text-muted:    #9CA3AF;
+
+  --accent:        #0A0A0A;
+  --accent-hover:  #222222;
+
+  --toggle-on-bg:  #0A0A0A;
+  --toggle-off-bg: #D9D9D9;
+  --toggle-thumb:  #FFFFFF;
+
+  --danger:        #EF4444;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+
+  --radius-pill: 999px;
+  --radius-card: 12px;
+  --radius-sm:   8px;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg);
+  width: 380px;
+  min-height: 200px;
+  overflow-x: hidden;
+}
+
+/* ── App container ────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+}
+
+/* ── Header ───────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.brand-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-name {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+/* Master toggle */
+.master-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.master-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.master-label.off {
+  color: var(--text-muted);
+}
+
+.master-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  background: var(--toggle-on-bg);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.master-toggle.off {
+  background: var(--toggle-off-bg);
+}
+
+.master-toggle .toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--toggle-thumb);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.master-toggle.off .toggle-thumb {
+  transform: translateX(0);
+}
+
+.master-toggle:not(.off) .toggle-thumb {
+  transform: translateX(18px);
+}
+
+/* ── Stats bar ────────────────────────────── */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--surface);
+  padding: 10px 18px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.stat-num {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.1px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Add section ──────────────────────────── */
+.add-section {
+  padding: 14px 16px 12px;
+  background: var(--bg);
+}
+
+.input-pill-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 4px 4px 4px 12px;
+  gap: 8px;
+  box-shadow: var(--shadow-xs);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-pill-wrap:focus-within {
+  border-color: #C0C0C0;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06), var(--shadow-xs);
+}
+
+.input-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.site-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.site-input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.add-btn:hover {
+  background: var(--accent-hover);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+.input-error {
+  font-size: 11.5px;
+  color: var(--danger);
+  margin-top: 6px;
+  padding-left: 14px;
+  min-height: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s, opacity 0.2s;
+  opacity: 0;
+}
+
+.input-error.visible {
+  max-height: 20px;
+  opacity: 1;
+}
+
+/* ── List section ─────────────────────────── */
+.list-section {
+  background: var(--bg);
+  padding: 0 16px 8px;
+  min-height: 60px;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 8px;
+}
+
+.list-header span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.clear-all-btn {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  transition: color 0.15s, background 0.15s;
+}
+
+.clear-all-btn:hover {
+  color: var(--danger);
+  background: #FEF2F2;
+}
+
+.site-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.site-list::-webkit-scrollbar {
+  width: 4px;
+}
+.site-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.site-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* ── Site item ────────────────────────────── */
+.site-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 10px 12px;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.15s, border-color 0.15s, opacity 0.2s;
+  animation: itemIn 0.18s ease;
+}
+
+@keyframes itemIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.site-item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: #E0E0E0;
+}
+
+.site-item.disabled {
+  opacity: 0.55;
+}
+
+/* Favicon / letter avatar */
+.site-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+
+.site-avatar img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.site-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-domain {
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.1px;
+}
+
+.site-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.site-status.blocking {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: #22C55E;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.18);
+}
+
+/* Site-level toggle */
+.site-toggle {
+  position: relative;
+  width: 34px;
+  height: 19px;
+  background: var(--toggle-on-bg);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.site-toggle.off {
+  background: var(--toggle-off-bg);
+}
+
+.site-toggle .toggle-thumb {
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+
+.site-toggle:not(.off) .toggle-thumb {
+  transform: translateX(15px);
+}
+
+/* Delete button */
+.delete-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.delete-btn:hover {
+  background: #FEF2F2;
+  color: var(--danger);
+}
+
+/* ── Empty state ──────────────────────────── */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px 20px;
+  text-align: center;
+}
+
+.empty-state.visible {
+  display: flex;
+}
+
+.empty-icon {
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.empty-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Footer ───────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.footer-text {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* ── Master off overlay tint ──────────────── */
+.app.master-off .list-section,
+.app.master-off .stats-bar .stat-num {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.app.master-off .stats-bar .stat-num {
+  opacity: 0.5;
+}
